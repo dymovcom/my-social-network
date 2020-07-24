@@ -1,0 +1,26 @@
+.sidebar {
+  display: flex;
+  justify-content: center;
+  flex-basis: 23%;
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 5px 35px;
+}
+
+.list {
+  list-style: none;
+}
+
+.item {
+  margin-bottom: 10px;
+}
+
+.item:last-of-type {
+  margin-bottom: 0;
+}
+
+.link {
+  text-decoration: none;
+  color: #000;
+}

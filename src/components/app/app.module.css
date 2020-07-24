@@ -1,0 +1,32 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #edeef0;
+}
+
+.wrapper {
+  width: 90%;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.content {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.main {
+  background-color: #fff;
+  flex-basis: 74%;
+  display: flex;
+  justify-content: center;
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 10px 20px;
+}
