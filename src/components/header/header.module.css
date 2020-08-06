@@ -1,20 +1,26 @@
 .header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  height: 42px;
   color: #fff;
-  background-color: #5181b8;
-  border-radius: 10px;
-  overflow: hidden;
-  padding: 5px 15px;
-  margin-bottom: 15px;
+  background-color: #4A76A8;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+  max-width: 990px;
+  padding: 0 15px;
+  margin: 0 auto;
 }
 
 .logo {
-  width: 50px;
+  width: 35px;
   border-radius: 50%;
 }
 
 .login {
-  font-size: 18px;
+  font-size: 12px;
 }

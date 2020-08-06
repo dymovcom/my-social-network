@@ -3,22 +3,12 @@ import s from './myPosts.module.css';
 import Post from "./post/post";
 import NewPost from "./newPost/newPost";
 
-const MyPosts = () => {
+const MyPosts = ({posts, addPost}) => {
+    const postsElements = posts.map(post => <Post message={post.message} like={post.likeCount} />);
     return (
         <div className={s.posts}>
-            <NewPost/>
-            <Post
-                message='Привет! Как у тебя дела??'
-                like={4}
-            />
-            <Post
-                message='Привет! Все хорошо!'
-                like={2}
-            />
-            <Post
-                message='Учу реакт!'
-                like={22}
-            />
+            <NewPost addPost={addPost}/>
+            {postsElements}
         </div>
     )
 }

@@ -1,11 +1,19 @@
 import React from "react";
 import s from './newPost.module.css';
 
-const NewPost = () => {
+const NewPost = (props) => {
+    const newPostElement = React.createRef();
+
+    const onAddPost = () => {
+        const text = newPostElement.current.value;
+        props.addPost(text);
+        newPostElement.current.value = 'Что у вас нового?';
+    }
+
     return (
         <div className={s.newPost}>
-            <input className={s.input} type="text" placeholder='Новый пост'/>
-            <button className={s.button}>Отправить</button>
+            <textarea className={s.input} ref={newPostElement} placeholder='Что у вас нового?'/>
+            <button className={s.button} onClick={onAddPost}>Опубликовать</button>
         </div>
     )
 }
