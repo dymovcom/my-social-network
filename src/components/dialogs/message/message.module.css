@@ -1,0 +1,28 @@
+.message {
+    max-width: 540px;
+    flex-basis: 50%;
+    /*margin-left: 50px;*/
+    margin-bottom: 25px;
+    /*padding-left: 53px;*/
+}
+
+.messageBubble {
+    padding: 20px;
+    max-width: 470px;
+    background: #ebebeb;
+    position: relative;
+    border-radius: 10px;
+    margin-left: 50px;
+}
+
+.messageBubble:before {
+    content: "";
+    position: absolute;
+    right: 100%;
+    bottom: 7px;
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-right: 30px solid #ebebeb;
+    border-bottom: 14px solid transparent;
+}
