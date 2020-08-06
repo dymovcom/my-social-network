@@ -7,6 +7,7 @@ const state = {
             {id: 2, message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi cum distinctio, excepturi ipsum laborum nihil perferendis reprehenderit voluptatum? Deserunt dolorem excepturi itaque iure laborum nostrum officia quam quia repudiandae tempora.', likeCount: 2},
             {id: 3, message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi cum distinctio, excepturi ipsum laborum nihil perferendis reprehenderit voluptatum? Deserunt dolorem excepturi itaque iure laborum nostrum officia quam quia repudiandae tempora.', likeCount: 22},
         ],
+        newPostText: '',
         friends: [
             {id: 1, name: 'Иван', avaSrc: 'https://i09.fotocdn.net/s104/53e353be917dd79f/user_xl/2209123980.jpg'},
             {id: 2, name: 'Сергей', avaSrc: 'https://i09.fotocdn.net/s104/53e353be917dd79f/user_xl/2209123980.jpg'},
@@ -33,13 +34,21 @@ const state = {
     }
 }
 
-export const addPost = (postBody) => {
+window.state = state;
+
+export const addPost = () => {
     const newPost = {
         id: 5,
-        message: postBody,
+        message: state.profilePage.newPostText,
         likeCount: 0
     };
     state.profilePage.posts.push(newPost);
+    state.profilePage.newPostText = '';
+    rerenderEntireTree(state);
+}
+
+export const updateNewPostText = (newText) => {
+    state.profilePage.newPostText = newText;
     rerenderEntireTree(state);
 }
 

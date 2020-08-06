@@ -5,14 +5,17 @@ const NewPost = (props) => {
     const newPostElement = React.createRef();
 
     const onAddPost = () => {
+        props.addPost();
+    }
+
+    const onChangePost = () => {
         const text = newPostElement.current.value;
-        props.addPost(text);
-        newPostElement.current.value = 'Что у вас нового?';
+        props.updateNewPostText(text);
     }
 
     return (
         <div className={s.newPost}>
-            <textarea className={s.input} ref={newPostElement} placeholder='Что у вас нового?'/>
+            <textarea className={s.input} ref={newPostElement} placeholder='Что у вас нового?' value={props.newPostText} onChange={onChangePost}/>
             <button className={s.button} onClick={onAddPost}>Опубликовать</button>
         </div>
     )

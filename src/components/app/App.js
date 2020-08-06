@@ -10,7 +10,7 @@ import {BrowserRouter, Route} from "react-router-dom";
 
 
 
-const App = ({state: {dialogsPage, profilePage}, addPost}) => {
+const App = (props) => {
     return (
         <BrowserRouter>
             <Header/>
@@ -20,11 +20,11 @@ const App = ({state: {dialogsPage, profilePage}, addPost}) => {
                     <div className={s.main}>
                         <Route
                             path='/profile'
-                            render={() => <Profile data={profilePage} addPost={addPost}/>}
+                            render={() => <Profile data={props.state.profilePage} addPost={props.addPost} updateNewPostText={props.updateNewPostText}/>}
                         />
                         <Route
                             path='/dialogs'
-                            render={() => <Dialogs data={dialogsPage}/>}
+                            render={() => <Dialogs data={props.state.dialogsPage}/>}
                         />
                         <Route
                             path='/news'
