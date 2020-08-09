@@ -8,8 +8,6 @@ import News from "../news/news";
 import Music from "../music/music";
 import {BrowserRouter, Route} from "react-router-dom";
 
-
-
 const App = (props) => {
     return (
         <BrowserRouter>
