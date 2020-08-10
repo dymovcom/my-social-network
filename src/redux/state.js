@@ -2,9 +2,21 @@ const store = {
     _state: {
         profilePage: {
             posts: [
-                {id: 1, message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi cum distinctio, excepturi ipsum laborum nihil perferendis reprehenderit voluptatum? Deserunt dolorem excepturi itaque iure laborum nostrum officia quam quia repudiandae tempora.', likeCount: 4},
-                {id: 2, message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi cum distinctio, excepturi ipsum laborum nihil perferendis reprehenderit voluptatum? Deserunt dolorem excepturi itaque iure laborum nostrum officia quam quia repudiandae tempora.', likeCount: 2},
-                {id: 3, message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi cum distinctio, excepturi ipsum laborum nihil perferendis reprehenderit voluptatum? Deserunt dolorem excepturi itaque iure laborum nostrum officia quam quia repudiandae tempora.', likeCount: 22},
+                {
+                    id: 1,
+                    message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi cum distinctio, excepturi ipsum laborum nihil perferendis reprehenderit voluptatum? Deserunt dolorem excepturi itaque iure laborum nostrum officia quam quia repudiandae tempora.',
+                    likeCount: 4
+                },
+                {
+                    id: 2,
+                    message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi cum distinctio, excepturi ipsum laborum nihil perferendis reprehenderit voluptatum? Deserunt dolorem excepturi itaque iure laborum nostrum officia quam quia repudiandae tempora.',
+                    likeCount: 2
+                },
+                {
+                    id: 3,
+                    message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi cum distinctio, excepturi ipsum laborum nihil perferendis reprehenderit voluptatum? Deserunt dolorem excepturi itaque iure laborum nostrum officia quam quia repudiandae tempora.',
+                    likeCount: 22
+                },
             ],
             newPostText: '',
             friends: [
@@ -35,25 +47,36 @@ const store = {
     _callSubscriber() {
         console.log('no subscribers');
     },
+
     getState() {
         return this._state;
     },
-    addPost() {
-        const newPost = {
-            id: 5,
-            message: this._state.profilePage.newPostText,
-            likeCount: 0
-        };
-        this._state.profilePage.posts.push(newPost);
-        this._state.profilePage.newPostText = '';
-        this._callSubscriber(this._state);
-    },
-    updateNewPostText(newText) {
-        this._state.profilePage.newPostText = newText;
-        this._callSubscriber(this._state);
-    },
     subscribe(observer) {
         this._callSubscriber = observer;
+    },
+
+    dispatch(action) {
+        switch (action.type) {
+            case 'ADD-POST':
+                const newPost = {
+                    id: 5,
+                    message: this._state.profilePage.newPostText,
+                    likeCount: 0
+                };
+                this._state.profilePage.posts.push(newPost);
+                this._state.profilePage.newPostText = '';
+                this._callSubscriber(this._state);
+                break;
+
+            case 'UPDATE-NEW-POST-TEXT':
+                this._state.profilePage.newPostText = action.newText;
+                this._callSubscriber(this._state);
+                break;
+
+            default:
+                break;
+        }
+
     }
 }
 
