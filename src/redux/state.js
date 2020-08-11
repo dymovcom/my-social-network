@@ -1,3 +1,9 @@
+const
+    ADD_POST = 'ADD-POST',
+    UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT',
+    ADD_MESSAGE = 'ADD-MESSAGE',
+    UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
+
 const store = {
     _state: {
         profilePage: {
@@ -37,11 +43,12 @@ const store = {
                 {id: 5, name: 'Дима'},
             ],
             messages: [
-                {id: 1, text: 'Привет! Как дела?'},
-                {id: 2, text: 'Здорово! Все нормально!'},
-                {id: 3, text: 'Когда в отпуск?'},
-                {id: 4, text: 'Yo'},
-            ]
+                {id: 1, author: 'Антон', text: 'Привет! Как дела?'},
+                {id: 2, author: 'Константин', text: 'Здорово! Все нормально!'},
+                {id: 3, author: 'Антон', text: 'Когда в отпуск?'},
+                {id: 4, author: 'Константин', text: 'Yo'},
+            ],
+            newMessageText: ''
         }
     },
     _callSubscriber() {
@@ -57,7 +64,7 @@ const store = {
 
     dispatch(action) {
         switch (action.type) {
-            case 'ADD-POST':
+            case ADD_POST:
                 const newPost = {
                     id: 5,
                     message: this._state.profilePage.newPostText,
@@ -68,15 +75,58 @@ const store = {
                 this._callSubscriber(this._state);
                 break;
 
-            case 'UPDATE-NEW-POST-TEXT':
+            case UPDATE_NEW_POST_TEXT:
                 this._state.profilePage.newPostText = action.newText;
+                this._callSubscriber(this._state);
+                break;
+
+            case ADD_MESSAGE:
+                const newMessage = {
+                    id: 5,
+                    author: action.author,
+                    text: this._state.dialogsPage.newMessageText
+                }
+                this._state.dialogsPage.messages.push(newMessage);
+                this._state.dialogsPage.newMessageText = '';
+                this._callSubscriber(this._state);
+                break;
+
+            case UPDATE_NEW_MESSAGE_TEXT:
+                this._state.dialogsPage.newMessageText = action.newText;
                 this._callSubscriber(this._state);
                 break;
 
             default:
                 break;
         }
+    }
+}
 
+export const addPostActionCreator = () => {
+    return {
+        type: ADD_POST
+    }
+}
+
+export const updateNewPostTextActionCreator = (text) => {
+    return {
+        type: UPDATE_NEW_POST_TEXT,
+        newText: text
+    }
+}
+
+export const addMessageActionCreator = (author) => {
+    return {
+        type: ADD_MESSAGE,
+        author: author
+    }
+}
+
+export const updateNewMessageTextActionCreator = (author, text) => {
+    return {
+        type: UPDATE_NEW_MESSAGE_TEXT,
+        author: author,
+        newText: text
     }
 }
 

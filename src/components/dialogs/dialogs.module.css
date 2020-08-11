@@ -1,21 +1,22 @@
 .dialogsWrapper {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    flex-basis: 100%;
+    width: 100%;
 }
 
 .dialogs {
+    width: 230px;
+    height: 100%;
     display: flex;
     flex-direction: column;
-    flex-basis: 27%;
+    background-color: #fff;
+    border-radius: 4px;
 }
 
 .messages {
-    flex-basis: 67%;
-    display: flex;
-    flex-direction: column;
-    border-left: 3px solid gray;
+    width: 550px;
+    background-color: #fff;
+    border-radius: 4px;
     height: 100%;
-    padding-left: 15px;
+    padding: 15px 30px;
 }
